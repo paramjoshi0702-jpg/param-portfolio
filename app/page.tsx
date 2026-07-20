@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { ParticleBackground } from '@/components/particle-background';
 import { AnimatedBlobs } from '@/components/animated-blobs';
+import { AnimatedGradient } from '@/components/animated-gradient';
 import { CustomCursor } from '@/components/custom-cursor';
 import { ScrollProgress } from '@/components/scroll-progress';
 import { Loader } from '@/components/loader';
@@ -31,6 +32,7 @@ export default function Home() {
       <div className="fixed inset-0 aurora-bg pointer-events-none" style={{ zIndex: 0 }} />
       <div className="fixed inset-0 grid-bg pointer-events-none opacity-40" style={{ zIndex: 0 }} />
       <AnimatedBlobs />
+      <AnimatedGradient />
       <ParticleBackground />
 
       <div className="relative" style={{ zIndex: 2 }}>

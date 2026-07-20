@@ -3,6 +3,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Github, ExternalLink, Briefcase, User, Monitor } from 'lucide-react';
+import { useMagnetic } from '@/hooks/use-magnetic';
 
 const GITHUB_BASE = 'https://github.com/paramjoshi0702-jpg';
 
@@ -105,6 +106,9 @@ function TiltCard({ project, index }: { project: (typeof projects)[number]; inde
   const rotateY = useSpring(useTransform(mx, [-0.5, 0.5], [-10, 10]), { stiffness: 200, damping: 20 });
   const layerX = useTransform(mx, [-0.5, 0.5], [-12, 12]);
   const layerY = useTransform(my, [-0.5, 0.5], [-8, 8]);
+  const liveBtnRef = useMagnetic<HTMLAnchorElement>(0.2);
+  const ghBtnRef = useMagnetic<HTMLAnchorElement>(0.2);
+  const sheenRef = useRef<HTMLDivElement>(null);
 
   const handleMove = (e: React.MouseEvent) => {
     const el = ref.current;
@@ -112,11 +116,20 @@ function TiltCard({ project, index }: { project: (typeof projects)[number]; inde
     const rect = el.getBoundingClientRect();
     mx.set((e.clientX - rect.left) / rect.width - 0.5);
     my.set((e.clientY - rect.top) / rect.height - 0.5);
+    // Glass sheen tracking
+    const sheen = sheenRef.current;
+    if (sheen) {
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      sheen.style.background = `radial-gradient(circle 220px at ${x}px ${y}px, rgba(255,255,255,0.1), transparent 60%)`;
+    }
   };
 
   const reset = () => {
     mx.set(0);
     my.set(0);
+    const sheen = sheenRef.current;
+    if (sheen) sheen.style.background = 'transparent';
   };
 
   return (
@@ -134,7 +147,8 @@ function TiltCard({ project, index }: { project: (typeof projects)[number]; inde
         style={{ rotateX, rotateY, transformPerspective: 1200 }}
         className="glass-strong rounded-3xl p-6 md:p-8 glow-border hover:glow-purple transition-shadow group"
       >
-        {/* Category badge */}
+        <div ref={sheenRef} className="pointer-events-none absolute inset-0 z-10 rounded-3xl transition-opacity duration-500" style={{ background: 'transparent' }} />
+        <div className="relative z-20">
         <div className="flex items-center justify-between mb-6">
           <span className="inline-flex items-center gap-2 text-xs px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-gradient-purple font-medium">
             <Monitor size={12} /> {project.category}
@@ -181,15 +195,17 @@ function TiltCard({ project, index }: { project: (typeof projects)[number]; inde
         {/* Buttons */}
         <div className="flex gap-3">
           <a
+            ref={liveBtnRef}
             href={project.liveUrl}
             target="_blank"
             rel="noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium text-white transition-opacity hover:opacity-90"
+            className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium text-white transition-all hover:shadow-[0_0_25px_rgba(124,58,237,0.4)]"
             style={{ background: 'linear-gradient(135deg, #7c3aed, #2563eb)' }}
           >
             <ExternalLink size={15} /> View Project
           </a>
           <a
+            ref={ghBtnRef}
             href={project.githubUrl}
             target="_blank"
             rel="noreferrer"
@@ -197,6 +213,7 @@ function TiltCard({ project, index }: { project: (typeof projects)[number]; inde
           >
             <Github size={15} /> GitHub
           </a>
+        </div>
         </div>
       </motion.div>
     </motion.div>

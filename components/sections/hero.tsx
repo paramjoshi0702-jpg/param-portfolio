@@ -1,9 +1,11 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Github, Linkedin, Mail, ArrowRight, Sparkles } from 'lucide-react';
+import { useMagnetic } from '@/hooks/use-magnetic';
+import { useMouseParallax } from '@/hooks/use-mouse-parallax';
 
 const roles = [
   'Artificial Intelligence',
@@ -41,9 +43,25 @@ function useTyping() {
 
 const GITHUB = 'https://github.com/paramjoshi0702-jpg';
 
+const headingVariants = {
+  hidden: { y: 40, opacity: 0, filter: 'blur(10px)' },
+  visible: (i: number) => ({
+    y: 0,
+    opacity: 1,
+    filter: 'blur(0px)',
+    transition: { duration: 0.9, delay: 0.3 + i * 0.15, ease: [0.22, 1, 0.36, 1] as const },
+  }),
+};
+
 export function Hero() {
   const typed = useTyping();
   const scrollTo = (id: string) => document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+
+  const btn1Ref = useMagnetic<HTMLButtonElement>(0.25);
+  const btn2Ref = useMagnetic<HTMLButtonElement>(0.2);
+  const photoRef = useMouseParallax<HTMLDivElement>(0.015);
+  const badge1Ref = useMouseParallax<HTMLDivElement>(0.03);
+  const badge2Ref = useMouseParallax<HTMLDivElement>(0.025);
 
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-28 pb-16">
@@ -63,24 +81,26 @@ export function Hero() {
               transition={{ delay: 0.2 }}
               className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 text-sm text-muted-foreground mb-6"
             >
-              <Sparkles size={14} className="text-purple-400" />
+              <Sparkles size={14} className="text-purple-400 animate-pulse-glow" />
               Available for opportunities
             </motion.div>
 
             <h1 className="font-display text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight">
               <motion.span
-                className="block text-foreground/90"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
+                className="block text-foreground/90 overflow-hidden"
+                custom={0}
+                variants={headingVariants}
+                initial="hidden"
+                animate="visible"
               >
                 Hi,
               </motion.span>
               <motion.span
-                className="block text-gradient"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.45 }}
+                className="block text-gradient overflow-hidden"
+                custom={1}
+                variants={headingVariants}
+                initial="hidden"
+                animate="visible"
               >
                 I&apos;m Param Joshi
               </motion.span>
@@ -117,8 +137,9 @@ export function Hero() {
               className="mt-8 flex flex-wrap gap-4"
             >
               <button
+                ref={btn1Ref}
                 onClick={() => scrollTo('#projects')}
-                className="magnetic group relative px-6 py-3 rounded-xl font-medium text-white overflow-hidden glow-purple"
+                className="group relative px-6 py-3 rounded-xl font-medium text-white overflow-hidden glow-purple"
                 style={{ background: 'linear-gradient(135deg, #7c3aed, #2563eb)' }}
               >
                 <span className="relative z-10 flex items-center gap-2">
@@ -128,8 +149,9 @@ export function Hero() {
                 <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
               </button>
               <button
+                ref={btn2Ref}
                 onClick={() => scrollTo('#contact')}
-                className="magnetic px-6 py-3 rounded-xl font-medium glass hover:bg-white/10 transition-colors"
+                className="px-6 py-3 rounded-xl font-medium glass hover:bg-white/10 transition-colors"
               >
                 Contact Me
               </button>
@@ -155,7 +177,6 @@ export function Hero() {
                   whileHover={{ y: -4, scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   className="p-3 rounded-xl glass hover:bg-white/10 transition-colors"
-                  style={{ animationDelay: `${i * 0.1}s` }}
                   aria-label={s.label}
                 >
                   <s.icon size={18} className="text-muted-foreground" />
@@ -171,7 +192,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="order-1 lg:order-2 flex justify-center"
           >
-            <div className="relative w-[220px] h-[220px] xs:w-[260px] xs:h-[260px] sm:w-[320px] sm:h-[320px] md:w-[400px] md:h-[400px] lg:w-[440px] lg:h-[440px]">
+            <div ref={photoRef} className="relative w-[220px] h-[220px] xs:w-[260px] xs:h-[260px] sm:w-[320px] sm:h-[320px] md:w-[400px] md:h-[400px] lg:w-[440px] lg:h-[440px]">
               {/* Rotating conic glow */}
               <div
                 className="absolute -inset-6 rounded-full animate-spin-slow pointer-events-none"
@@ -204,6 +225,7 @@ export function Hero() {
 
               {/* Floating badge — top right */}
               <motion.div
+                ref={badge1Ref}
                 className="absolute -top-3 -right-3 md:top-2 md:-right-6 glass rounded-2xl px-3 py-2 text-xs font-medium shadow-lg"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
@@ -213,6 +235,7 @@ export function Hero() {
 
               {/* Floating badge — bottom left */}
               <motion.div
+                ref={badge2Ref}
                 className="absolute -bottom-3 -left-3 md:bottom-2 md:-left-6 glass rounded-2xl px-3 py-2 text-xs font-medium shadow-lg"
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
