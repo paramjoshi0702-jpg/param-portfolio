@@ -28,7 +28,7 @@ const projects = [
     gradient: 'from-blue-600 via-indigo-600 to-purple-600',
     accent: '#2563eb',
     liveUrl: 'https://paramjoshi0702-jpg.github.io/lic-website/',
-    githubUrl: `${GITHUB_BASE}/lic-website`,
+    githubUrl: `https://paramjoshi0702-jpg.github.io/lic-website/`,
     urlSlug: 'lic-website',
   },
   {
@@ -51,7 +51,7 @@ const projects = [
     gradient: 'from-purple-600 via-fuchsia-600 to-pink-600',
     accent: '#a855f7',
     liveUrl: 'https://paramjoshi0702-jpg.github.io/portfolio/',
-    githubUrl: `${GITHUB_BASE}/portfolio`,
+    githubUrl: `https://paramjoshi0702-jpg.github.io/portfolio/`,
     urlSlug: 'portfolio',
   },
 ];
