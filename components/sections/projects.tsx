@@ -138,8 +138,7 @@ function TiltCard({ project, index }: { project: (typeof projects)[number]; inde
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.7, delay: index * 0.15 }}
-      className={`relative ${index % 2 === 1 ? 'lg:translate-y-16' : ''}`}
-    >
+      className={`relative ${index % 2 === 1 ? 'lg:translate-y-16' : ''}`}    >
       <motion.div
         ref={ref}
         onMouseMove={handleMove}

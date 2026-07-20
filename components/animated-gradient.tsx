@@ -14,6 +14,8 @@ export function AnimatedGradient() {
     const el = ref.current;
     if (!el) return;
 
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     const ctx = gsap.context(() => {
       gsap.to(el, {
         rotation: 360,

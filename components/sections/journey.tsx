@@ -1,13 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { GraduationCap, BookOpen, Code2, Globe, Layout, Briefcase, User, Layers, Brain, Target, Rocket } from 'lucide-react';
+import { GraduationCap, BookOpen, Code2, Globe, Layout, Briefcase, User, Layers, Brain, Target, Rocket, Cpu } from 'lucide-react';
 
 const journey = [
   { icon: GraduationCap, title: 'Joined ITM SLS Baroda University', desc: 'Began my academic journey in Computer Science Engineering.' },
   { icon: BookOpen, title: 'Pursuing B.Tech in CSE (AI)', desc: 'Started B.Tech in Computer Science Engineering with specialization in Artificial Intelligence.' },
   { icon: Code2, title: 'Started Learning C Programming', desc: 'Built my programming foundations with the C language.' },
-  { icon: Code2, title: 'Learned Python Fundamentals', desc: 'Explored Python and its applications in AI and automation.' },
+  { icon: Cpu, title: 'Learned Python Fundamentals', desc: 'Explored Python and its applications in AI and automation.' },
   { icon: Globe, title: 'Learned HTML5 & CSS3', desc: 'Stepped into web development with HTML5 and CSS3.' },
   { icon: Layout, title: 'Building Responsive Websites', desc: 'Started crafting responsive, mobile-friendly websites.' },
   { icon: Briefcase, title: 'LIC Agent Business Website', desc: 'Built my first real-world project — an LIC Agent Business Website for my mother.' },

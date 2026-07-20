@@ -13,6 +13,8 @@ export function AnimatedBlobs() {
     const container = containerRef.current;
     if (!container) return;
 
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     const isTouch = window.matchMedia('(pointer: coarse)').matches;
     const blobs = [blob1Ref.current, blob2Ref.current, blob3Ref.current].filter(Boolean) as HTMLDivElement[];
 

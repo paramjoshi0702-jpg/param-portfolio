@@ -85,7 +85,7 @@ export function Hero() {
               Available for opportunities
             </motion.div>
 
-            <h1 className="font-display text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight">
+            <h1 className="font-display text-4xl xs:text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight">
               <motion.span
                 className="block text-foreground/90 overflow-hidden"
                 custom={0}
@@ -110,7 +110,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="mt-4 text-xl md:text-2xl text-muted-foreground font-light space-y-0.5"
+              className="mt-4 text-lg xs:text-xl md:text-2xl text-muted-foreground font-light space-y-0.5"
             >
               <span className="block">AI Enthusiast</span>
               <span className="block">Software Developer</span>
@@ -122,7 +122,7 @@ export function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className="mt-6 h-9 text-lg md:text-xl font-mono"
+              className="mt-6 h-9 text-base xs:text-lg md:text-xl font-mono"
             >
               <span className="text-muted-foreground">{'> '}</span>
               <span className="text-gradient-purple font-semibold">{typed}</span>
@@ -134,12 +134,12 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.95 }}
-              className="mt-8 flex flex-wrap gap-4"
+              className="mt-8 flex flex-wrap gap-3 sm:gap-4"
             >
               <button
                 ref={btn1Ref}
                 onClick={() => scrollTo('#projects')}
-                className="group relative px-6 py-3 rounded-xl font-medium text-white overflow-hidden glow-purple"
+                className="group relative px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-medium text-white overflow-hidden glow-purple text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50"
                 style={{ background: 'linear-gradient(135deg, #7c3aed, #2563eb)' }}
               >
                 <span className="relative z-10 flex items-center gap-2">
@@ -151,7 +151,7 @@ export function Hero() {
               <button
                 ref={btn2Ref}
                 onClick={() => scrollTo('#contact')}
-                className="px-6 py-3 rounded-xl font-medium glass hover:bg-white/10 transition-colors"
+                className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-medium glass hover:bg-white/10 transition-colors text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50"
               >
                 Contact Me
               </button>
@@ -226,7 +226,7 @@ export function Hero() {
               {/* Floating badge — top right */}
               <motion.div
                 ref={badge1Ref}
-                className="absolute -top-3 -right-3 md:top-2 md:-right-6 glass rounded-2xl px-3 py-2 text-xs font-medium shadow-lg"
+                className="absolute -top-2 right-2 sm:-top-3 sm:-right-3 md:top-2 md:-right-6 glass rounded-2xl px-2.5 py-1.5 sm:px-3 sm:py-2 text-[10px] sm:text-xs font-medium shadow-lg z-10"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               >
@@ -236,7 +236,7 @@ export function Hero() {
               {/* Floating badge — bottom left */}
               <motion.div
                 ref={badge2Ref}
-                className="absolute -bottom-3 -left-3 md:bottom-2 md:-left-6 glass rounded-2xl px-3 py-2 text-xs font-medium shadow-lg"
+                className="absolute -bottom-2 left-2 sm:-bottom-3 sm:-left-3 md:bottom-2 md:-left-6 glass rounded-2xl px-2.5 py-1.5 sm:px-3 sm:py-2 text-[10px] sm:text-xs font-medium shadow-lg z-10"
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
               >

@@ -1,23 +1,28 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import {
+  Code2, Coffee, FileCode2, Plus, Globe, Palette,
+  Zap, GitBranch, Github, Monitor, Figma, Terminal,
+  Bot, Sparkles, Smartphone,
+} from 'lucide-react';
 
 const tech = [
-  { name: 'Python', emoji: '🐍', color: 'from-blue-500 to-yellow-400' },
-  { name: 'Java', emoji: '☕', color: 'from-orange-500 to-red-500' },
-  { name: 'C', emoji: '🔵', color: 'from-blue-600 to-cyan-500' },
-  { name: 'C++', emoji: '➕', color: 'from-blue-500 to-purple-500' },
-  { name: 'HTML', emoji: '🌐', color: 'from-orange-500 to-red-500' },
-  { name: 'CSS', emoji: '🎨', color: 'from-blue-500 to-cyan-400' },
-  { name: 'JavaScript', emoji: '⚡', color: 'from-yellow-400 to-amber-500' },
-  { name: 'Git', emoji: '🌿', color: 'from-orange-600 to-red-600' },
-  { name: 'GitHub', emoji: '🐙', color: 'from-gray-600 to-purple-500' },
-  { name: 'VS Code', emoji: '📘', color: 'from-blue-500 to-indigo-500' },
-  { name: 'Figma', emoji: '🎯', color: 'from-pink-500 to-purple-500' },
-  { name: 'Linux', emoji: '🐧', color: 'from-gray-700 to-yellow-500' },
-  { name: 'AI', emoji: '🤖', color: 'from-purple-500 to-blue-500' },
-  { name: 'OpenAI', emoji: '✨', color: 'from-emerald-500 to-teal-500' },
-  { name: 'Responsive', emoji: '📱', color: 'from-cyan-500 to-blue-500' },
+  { name: 'Python', icon: Code2, color: 'text-blue-400' },
+  { name: 'Java', icon: Coffee, color: 'text-orange-400' },
+  { name: 'C', icon: FileCode2, color: 'text-cyan-400' },
+  { name: 'C++', icon: Plus, color: 'text-purple-400' },
+  { name: 'HTML', icon: Globe, color: 'text-orange-500' },
+  { name: 'CSS', icon: Palette, color: 'text-blue-500' },
+  { name: 'JavaScript', icon: Zap, color: 'text-yellow-400' },
+  { name: 'Git', icon: GitBranch, color: 'text-orange-600' },
+  { name: 'GitHub', icon: Github, color: 'text-gray-300' },
+  { name: 'VS Code', icon: Monitor, color: 'text-blue-400' },
+  { name: 'Figma', icon: Figma, color: 'text-pink-400' },
+  { name: 'Linux', icon: Terminal, color: 'text-yellow-500' },
+  { name: 'AI', icon: Bot, color: 'text-purple-400' },
+  { name: 'OpenAI', icon: Sparkles, color: 'text-emerald-400' },
+  { name: 'Responsive', icon: Smartphone, color: 'text-cyan-400' },
 ];
 
 export function TechStack() {
@@ -41,16 +46,16 @@ export function TechStack() {
           <div className="flex gap-4 animate-marquee" style={{ width: 'max-content' }}>
             {[...tech, ...tech].map((t, i) => (
               <div
-                key={i}
-                className="flex-shrink-0 glass rounded-2xl px-6 py-5 flex items-center gap-3 hover:bg-white/10 transition-colors group"
+                key={`${t.name}-${i}`}
+                className="flex-shrink-0 glass rounded-2xl px-5 py-4 md:px-6 md:py-5 flex items-center gap-3 hover:bg-white/10 transition-colors group"
               >
-                <span className="text-3xl group-hover:scale-125 transition-transform">{t.emoji}</span>
-                <span className="font-medium whitespace-nowrap">{t.name}</span>
+                <t.icon className={`${t.color} group-hover:scale-125 transition-transform`} size={28} strokeWidth={1.5} />
+                <span className="font-medium whitespace-nowrap text-sm md:text-base">{t.name}</span>
               </div>
             ))}
           </div>
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-background to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 md:w-24 bg-gradient-to-r from-background to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-24 bg-gradient-to-l from-background to-transparent" />
         </div>
       </div>
     </section>

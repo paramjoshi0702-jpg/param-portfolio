@@ -71,6 +71,17 @@
   html {
     scroll-behavior: smooth;
   }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  section {
+    scroll-margin-top: 80px;
+  }
   body {
     @apply bg-background text-foreground;
     background-color: var(--bg-solid);
@@ -244,9 +255,12 @@
   .cursor-dot, .cursor-ring { display: none; }
 }
 
-/* Hide default cursor on desktop */
-@media (min-width: 769px) {
-  * { cursor: none; }
+/* Hide default cursor only on devices with fine pointer + no reduced motion */
+@media (min-width: 769px) and (pointer: fine) {
+  @media (prefers-reduced-motion: no-preference) {
+    body { cursor: none; }
+    a, button, input, textarea, [role="button"], [data-cursor="hover"] { cursor: none; }
+  }
 }
 
 /* Premium glow on hover */
