@@ -36,6 +36,12 @@ export default function Home() {
       <ParticleBackground />
 
       <div className="relative" style={{ zIndex: 2 }}>
+        <a
+          href="#home"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:rounded-lg focus:glass-strong focus:text-foreground"
+        >
+          Skip to content
+        </a>
         <Navbar />
         <main>
           <Hero />

@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Moon, Sun } from 'lucide-react';
-import { useTheme } from 'next-themes';
+import { Menu, X } from 'lucide-react';
 
 const links = [
   { label: 'Home', href: '#home' },
@@ -19,11 +18,8 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState('#home');
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     const onScroll = () => {
       setScrolled(window.scrollY > 30);
       const sections = links.map((l) => l.href.slice(1));
@@ -43,7 +39,6 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -71,7 +66,8 @@ export function Navbar() {
         >
           <button
             onClick={() => go('#home')}
-            className="group relative font-display text-2xl font-bold"
+            className="group relative font-display text-2xl font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/50 rounded-lg px-1"
+            aria-label="Go to home"
           >
             <span className="text-gradient">PJ</span>
             <span className="absolute -inset-1 rounded-lg bg-purple-500/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -83,7 +79,7 @@ export function Navbar() {
               <button
                 key={l.href}
                 onClick={() => go(l.href)}
-                className={`relative px-4 py-2 text-sm font-medium transition-colors ${
+                className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/50 ${
                   active === l.href ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
@@ -97,32 +93,15 @@ export function Navbar() {
                 )}
               </button>
             ))}
-            {mounted && (
-              <button
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="ml-2 p-2 rounded-lg glass hover:bg-white/10 transition-colors"
-                aria-label="Toggle theme"
-              >
-                {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-              </button>
-            )}
           </div>
 
           {/* Mobile actions */}
           <div className="md:hidden flex items-center gap-2">
-            {mounted && (
-              <button
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2 rounded-lg glass hover:bg-white/10 transition-colors"
-                aria-label="Toggle theme"
-              >
-                {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-              </button>
-            )}
             <button
-              className="p-2 rounded-lg glass"
+              className="p-2 rounded-lg glass hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/50"
               onClick={() => setOpen(!open)}
-              aria-label="Menu"
+              aria-label={open ? 'Close menu' : 'Open menu'}
+              aria-expanded={open}
             >
               {open ? <X size={18} /> : <Menu size={18} />}
             </button>
@@ -142,7 +121,7 @@ export function Navbar() {
               <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
                 <span className="font-display font-bold text-lg text-gradient">Menu</span>
                 <button
-                  className="p-2 rounded-lg glass"
+                  className="p-2 rounded-lg glass hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/50"
                   onClick={() => setOpen(false)}
                   aria-label="Close menu"
                 >

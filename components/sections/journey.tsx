@@ -28,7 +28,7 @@ export function Journey() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-mono text-gradient-purple tracking-widest">04 / JOURNEY</span>
+          <span className="text-sm font-mono text-gradient-purple tracking-widest">05 / JOURNEY</span>
           <h2 className="mt-3 font-display text-4xl md:text-6xl font-bold">
             My <span className="text-gradient">Journey</span>
           </h2>

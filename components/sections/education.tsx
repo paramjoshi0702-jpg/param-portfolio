@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { GraduationCap, MapPin, Calendar, Brain } from 'lucide-react';
+import { GraduationCap, MapPin, Brain, Sparkles } from 'lucide-react';
 
 export function Education() {
   return (
@@ -14,7 +14,7 @@ export function Education() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-mono text-gradient-purple tracking-widest">05 / EDUCATION</span>
+          <span className="text-sm font-mono text-gradient-purple tracking-widest">06 / EDUCATION</span>
           <h2 className="mt-3 font-display text-4xl md:text-6xl font-bold">
             <span className="text-gradient">Education</span>
           </h2>
@@ -51,7 +51,8 @@ export function Education() {
                   Computer Science Engineering
                 </p>
                 <p className="flex items-center gap-2">
-                  <Sparkle /> Specialization in Artificial Intelligence
+                  <Sparkles size={16} className="text-purple-400" />
+                  Specialization in Artificial Intelligence
                 </p>
                 <p className="flex items-center gap-2">
                   <MapPin size={16} className="text-purple-400" />
@@ -64,8 +65,4 @@ export function Education() {
       </div>
     </section>
   );
-}
-
-function Sparkle() {
-  return <span className="text-purple-400">✦</span>;
 }

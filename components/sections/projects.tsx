@@ -231,7 +231,7 @@ export function Projects() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-mono text-gradient-purple tracking-widest">03 / PROJECTS</span>
+          <span className="text-sm font-mono text-gradient-purple tracking-widest">04 / PROJECTS</span>
           <h2 className="mt-3 font-display text-4xl md:text-6xl font-bold">
             My <span className="text-gradient">Projects</span>
           </h2>

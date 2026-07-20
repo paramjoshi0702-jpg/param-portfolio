@@ -165,7 +165,7 @@ export function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 md:mb-16"
         >
-          <span className="text-sm font-mono text-gradient-purple tracking-widest">06 / CONTACT</span>
+          <span className="text-sm font-mono text-gradient-purple tracking-widest">09 / CONTACT</span>
           <h2 className="mt-3 font-display text-4xl md:text-6xl font-bold">
             Get In <span className="text-gradient">Touch</span>
           </h2>

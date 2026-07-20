@@ -31,7 +31,7 @@ export function TechStack() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="text-sm font-mono text-gradient-purple tracking-widest">TECH STACK</span>
+          <span className="text-sm font-mono text-gradient-purple tracking-widest">03 / TECH STACK</span>
           <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold">
             Tools I <span className="text-gradient">Use</span>
           </h2>

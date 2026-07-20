@@ -1,15 +1,15 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { useInView } from 'framer-motion';
+import { Code2, GitBranch, Sparkles } from 'lucide-react';
 
 type Skill = { name: string; level: number; tag?: string };
 
-const groups: { title: string; icon: string; skills: Skill[] }[] = [
+const groups: { title: string; icon: typeof Code2; skills: Skill[] }[] = [
   {
     title: 'Programming',
-    icon: '💻',
+    icon: Code2,
     skills: [
       { name: 'Python', level: 80 },
       { name: 'Java', level: 45, tag: 'Learning' },
@@ -22,7 +22,7 @@ const groups: { title: string; icon: string; skills: Skill[] }[] = [
   },
   {
     title: 'Version Control',
-    icon: '🔀',
+    icon: GitBranch,
     skills: [
       { name: 'Git', level: 70 },
       { name: 'GitHub', level: 75 },
@@ -30,7 +30,7 @@ const groups: { title: string; icon: string; skills: Skill[] }[] = [
   },
   {
     title: 'Other',
-    icon: '✨',
+    icon: Sparkles,
     skills: [
       { name: 'Artificial Intelligence', level: 55 },
       { name: 'Problem Solving', level: 75 },
@@ -101,10 +101,12 @@ export function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: gi * 0.15 }}
-              className="glass-strong rounded-3xl p-6 glow-border hover:glow-purple transition-shadow"
+              className="glass-strong rounded-3xl p-6 glow-border hover:glow-purple transition-shadow group"
             >
               <div className="flex items-center gap-3 mb-6">
-                <span className="text-2xl">{g.icon}</span>
+                <div className="p-2.5 rounded-xl bg-purple-500/10 group-hover:scale-110 transition-transform">
+                  <g.icon className="text-gradient-purple" size={22} />
+                </div>
                 <h3 className="font-display text-xl font-semibold">{g.title}</h3>
               </div>
               <div className="space-y-5">

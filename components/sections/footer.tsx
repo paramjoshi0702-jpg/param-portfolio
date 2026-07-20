@@ -3,6 +3,12 @@
 import { Github, Linkedin, Mail, Heart, ArrowUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+const socials = [
+  { icon: Github, href: 'https://github.com/paramjoshi0702-jpg', label: 'GitHub' },
+  { icon: Linkedin, href: '#', label: 'LinkedIn' },
+  { icon: Mail, href: 'mailto:paramjoshi0702@gmail.com', label: 'Email' },
+];
+
 export function Footer() {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -19,18 +25,15 @@ export function Footer() {
           </div>
 
           <div className="flex items-center gap-3">
-            {[
-              { icon: Github, href: 'https://github.com/paramjoshi0702-jpg' },
-              { icon: Linkedin, href: '#' },
-              { icon: Mail, href: 'mailto:paramjoshi0702@gmail.com' },
-            ].map((s, i) => (
+            {socials.map((s) => (
               <motion.a
-                key={i}
+                key={s.label}
                 href={s.href}
                 target={s.href.startsWith('http') ? '_blank' : undefined}
                 rel="noreferrer"
                 whileHover={{ y: -4 }}
                 className="p-2.5 rounded-xl glass hover:bg-white/10 transition-colors"
+                aria-label={s.label}
               >
                 <s.icon size={18} className="text-muted-foreground hover:text-foreground transition-colors" />
               </motion.a>

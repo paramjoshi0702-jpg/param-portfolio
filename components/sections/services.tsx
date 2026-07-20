@@ -14,7 +14,7 @@ const services = [
 
 export function Services() {
   return (
-    <section className="relative py-24 md:py-32">
+    <section id="services" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -23,7 +23,7 @@ export function Services() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-mono text-gradient-purple tracking-widest">SERVICES</span>
+          <span className="text-sm font-mono text-gradient-purple tracking-widest">07 / SERVICES</span>
           <h2 className="mt-3 font-display text-4xl md:text-6xl font-bold">
             What I <span className="text-gradient">Offer</span>
           </h2>
