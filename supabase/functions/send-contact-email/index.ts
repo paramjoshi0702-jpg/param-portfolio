@@ -10,6 +10,17 @@ const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 const OWNER_EMAIL = "paramjoshi0702@gmail.com";
 const FROM_EMAIL = Deno.env.get("RESEND_FROM_EMAIL") || "Portfolio <onboarding@resend.dev>";
 
+const NAME_MAX = 100;
+const MSG_MIN = 10;
+const MSG_MAX = 1000;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const SPAM_PATTERNS = [
+  /\bviagra\b/i, /\bcasino\b/i, /\bgamble\b/i, /\bloan\b/i, /\bcredit\b/i,
+  /\bseo\s+service/i, /\blink\s+building/i, /\bbitcoin\b/i, /\bcrypto\b/i,
+  /\bmake\s+money\b/i, /\bwork\s+from\s+home/i,
+];
+
 function json(data: unknown, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
@@ -17,8 +28,8 @@ function json(data: unknown, status = 200) {
   });
 }
 
-function isValidEmail(email: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+function escapeHtml(s: string): string {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
 Deno.serve(async (req: Request) => {
@@ -27,18 +38,24 @@ Deno.serve(async (req: Request) => {
   }
 
   if (req.method !== "POST") {
-    return json({ error: "Method not allowed" }, 405);
+    return json({ error: "Method not allowed." }, 405);
   }
 
   if (!RESEND_API_KEY) {
-    return json({ error: "Email service not configured." }, 503);
+    console.error("RESEND_API_KEY secret is not configured.");
+    return json({ error: "Email service is not configured. Please try again later." }, 503);
   }
 
-  let body: { name?: string; email?: string; message?: string };
+  let body: { name?: string; email?: string; message?: string; company?: string };
   try {
     body = await req.json();
   } catch {
     return json({ error: "Invalid request body." }, 400);
+  }
+
+  // Honeypot: if company is filled, silently accept (don't reveal to bot)
+  if (body.company && body.company.trim()) {
+    return json({ success: true });
   }
 
   const name = (body.name || "").trim();
@@ -48,14 +65,23 @@ Deno.serve(async (req: Request) => {
   if (!name || !email || !message) {
     return json({ error: "All fields are required." }, 400);
   }
-  if (name.length > 100) {
-    return json({ error: "Name is too long." }, 400);
+  if (name.length < 2 || name.length > NAME_MAX) {
+    return json({ error: `Name must be between 2 and ${NAME_MAX} characters.` }, 400);
   }
-  if (!isValidEmail(email)) {
+  if (!EMAIL_RE.test(email) || email.length > 254) {
     return json({ error: "Please enter a valid email address." }, 400);
   }
-  if (message.length > 5000) {
-    return json({ error: "Message is too long." }, 400);
+  if (message.length < MSG_MIN || message.length > MSG_MAX) {
+    return json({ error: `Message must be between ${MSG_MIN} and ${MSG_MAX} characters.` }, 400);
+  }
+
+  // Spam detection
+  const fullText = `${name} ${message}`;
+  if (SPAM_PATTERNS.some((p) => p.test(fullText))) {
+    return json({ error: "Your message was flagged as spam. Please revise and try again." }, 422);
+  }
+  if (/(https?:\/\/[^\s]+)/gi.test(message) && (message.match(/https?:\/\/[^\s]+/gi) || []).length > 3) {
+    return json({ error: "Too many links in your message. Please reduce them." }, 422);
   }
 
   const emailHtml = `
@@ -68,15 +94,15 @@ Deno.serve(async (req: Request) => {
         <table style="width: 100%; border-collapse: collapse;">
           <tr>
             <td style="color: #a1a1aa; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 6px 0; width: 80px;">Name</td>
-            <td style="color: #f4f4f5; font-size: 15px; font-weight: 600; padding: 6px 0;">${name.replace(/[<>&"]/g, "")}</td>
+            <td style="color: #f4f4f5; font-size: 15px; font-weight: 600; padding: 6px 0;">${escapeHtml(name)}</td>
           </tr>
           <tr>
             <td style="color: #a1a1aa; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 6px 0;">Email</td>
-            <td style="color: #c4b5fd; font-size: 15px; padding: 6px 0;">${email.replace(/[<>&"]/g, "")}</td>
+            <td style="color: #c4b5fd; font-size: 15px; padding: 6px 0;">${escapeHtml(email)}</td>
           </tr>
         </table>
         <div style="margin: 18px 0 8px; color: #a1a1aa; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Message</div>
-        <div style="color: #e4e4e7; font-size: 15px; line-height: 1.6; padding: 16px; background: rgba(255,255,255,0.04); border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); white-space: pre-wrap;">${message.replace(/[<>&"]/g, "")}</div>
+        <div style="color: #e4e4e7; font-size: 15px; line-height: 1.6; padding: 16px; background: rgba(255,255,255,0.04); border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); white-space: pre-wrap;">${escapeHtml(message)}</div>
       </div>
       <div style="padding: 16px 32px; border-top: 1px solid rgba(255,255,255,0.08); color: #71717a; font-size: 12px;">
         Sent from paramjoshi0702-jpg/portfolio
