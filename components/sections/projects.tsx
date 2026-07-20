@@ -205,7 +205,7 @@ function TiltCard({ project, index }: { project: (typeof projects)[number]; inde
           </a>
           <a
             ref={ghBtnRef}
-            href={project.githubUrl}
+            href={project.liveUrl}
             target="_blank"
             rel="noreferrer"
             className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium glass hover:bg-white/10 transition-colors"
