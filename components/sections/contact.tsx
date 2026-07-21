@@ -156,17 +156,17 @@ export function Contact() {
     msgLen > MSG_MAX ? 'text-red-400' : msgLen > MSG_MAX * 0.8 ? 'text-yellow-400' : 'text-muted-foreground/60';
 
   return (
-    <section id="contact" className="relative py-20 md:py-32">
+    <section id="contact" className="relative py-16 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <span className="text-sm font-mono text-gradient-purple tracking-widest">09 / CONTACT</span>
-          <h2 className="mt-3 font-display text-4xl md:text-6xl font-bold">
+          <span className="text-xs md:text-sm font-mono text-gradient-purple tracking-widest">09 / CONTACT</span>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl lg:text-6xl font-bold">
             Get In <span className="text-gradient">Touch</span>
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto text-sm md:text-base px-4">
@@ -174,7 +174,7 @@ export function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-6 md:gap-8">
+        <div className="grid lg:grid-cols-5 gap-4 md:gap-6">
           {/* Contact info */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -194,11 +194,11 @@ export function Contact() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ x: 6 }}
-                className="flex items-center gap-3 md:gap-4 glass-strong rounded-2xl p-4 glow-border hover:glow-purple transition-shadow group"
+                className="flex items-center gap-3 md:gap-4 glass-strong rounded-2xl p-3.5 md:p-4 glow-border hover:glow-purple transition-shadow group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50"
                 aria-label={`${c.label}: ${c.value}`}
               >
-                <div className="p-2.5 md:p-3 rounded-xl bg-purple-500/10 flex-shrink-0 group-hover:scale-110 transition-transform">
-                  <c.icon className="text-gradient-purple" size={20} />
+                <div className="p-2 md:p-2.5 rounded-xl bg-purple-500/10 flex-shrink-0 group-hover:scale-110 transition-transform">
+                  <c.icon className="text-gradient-purple" size={18} />
                 </div>
                 <div className="min-w-0">
                   <div className="text-xs text-muted-foreground">{c.label}</div>
@@ -220,7 +220,7 @@ export function Contact() {
               onSubmit={handleSubmit}
               noValidate
               aria-label="Contact form"
-              className="glass-strong rounded-3xl p-5 md:p-8 glow-border space-y-5"
+              className="glass-strong rounded-3xl p-5 md:p-8 glow-border space-y-4 md:space-y-5"
             >
               <div className="grid sm:grid-cols-2 gap-4 md:gap-5">
                 {/* Name */}

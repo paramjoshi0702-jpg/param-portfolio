@@ -14,22 +14,22 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="relative py-24 md:py-32">
+    <section id="services" className="relative py-16 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <span className="text-sm font-mono text-gradient-purple tracking-widest">07 / SERVICES</span>
-          <h2 className="mt-3 font-display text-4xl md:text-6xl font-bold">
+          <span className="text-xs md:text-sm font-mono text-gradient-purple tracking-widest">07 / SERVICES</span>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl lg:text-6xl font-bold">
             What I <span className="text-gradient">Offer</span>
           </h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {services.map((s, i) => (
             <motion.div
               key={s.title}
@@ -38,13 +38,13 @@ export function Services() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               whileHover={{ y: -8 }}
-              className="glass-strong rounded-3xl p-6 glow-border hover:glow-purple transition-shadow group"
+              className="glass-strong rounded-3xl p-5 md:p-6 glow-border hover:glow-purple transition-shadow group"
             >
-              <div className="p-3 rounded-2xl bg-purple-500/10 inline-block mb-4 group-hover:scale-110 transition-transform">
-                <s.icon className="text-gradient-purple" size={26} />
+              <div className="p-2.5 md:p-3 rounded-2xl bg-purple-500/10 inline-block mb-4 group-hover:scale-110 transition-transform">
+                <s.icon className="text-gradient-purple" size={24} />
               </div>
-              <h3 className="font-display text-xl font-semibold mb-2">{s.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+              <h3 className="font-display text-lg md:text-xl font-semibold mb-2">{s.title}</h3>
+              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
             </motion.div>
           ))}
         </div>

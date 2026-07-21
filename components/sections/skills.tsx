@@ -75,17 +75,17 @@ function ProgressBar({ skill, delay }: { skill: Skill; delay: number }) {
 
 export function Skills() {
   return (
-    <section id="skills" className="relative py-24 md:py-32">
+    <section id="skills" className="relative py-16 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <span className="text-sm font-mono text-gradient-purple tracking-widest">02 / SKILLS</span>
-          <h2 className="mt-3 font-display text-4xl md:text-6xl font-bold">
+          <span className="text-xs md:text-sm font-mono text-gradient-purple tracking-widest">02 / SKILLS</span>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl lg:text-6xl font-bold">
             My <span className="text-gradient">Skills</span>
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
@@ -93,7 +93,7 @@ export function Skills() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {groups.map((g, gi) => (
             <motion.div
               key={g.title}
@@ -101,15 +101,15 @@ export function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: gi * 0.15 }}
-              className="glass-strong rounded-3xl p-6 glow-border hover:glow-purple transition-shadow group"
+              className="glass-strong rounded-3xl p-5 md:p-6 glow-border hover:glow-purple transition-shadow group"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2.5 rounded-xl bg-purple-500/10 group-hover:scale-110 transition-transform">
-                  <g.icon className="text-gradient-purple" size={22} />
+              <div className="flex items-center gap-3 mb-5 md:mb-6">
+                <div className="p-2 md:p-2.5 rounded-xl bg-purple-500/10 group-hover:scale-110 transition-transform">
+                  <g.icon className="text-gradient-purple" size={20} />
                 </div>
-                <h3 className="font-display text-xl font-semibold">{g.title}</h3>
+                <h3 className="font-display text-lg md:text-xl font-semibold">{g.title}</h3>
               </div>
-              <div className="space-y-5">
+              <div className="space-y-4 md:space-y-5">
                 {g.skills.map((s, i) => (
                   <ProgressBar key={s.name} skill={s} delay={i * 0.08} />
                 ))}

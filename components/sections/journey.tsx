@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { GraduationCap, BookOpen, Code2, Globe, Layout, Briefcase, User, Layers, Brain, Target, Rocket, Cpu } from 'lucide-react';
+import { GraduationCap, BookOpen, Code2, Globe, Layout, Briefcase, Layers, Brain, Target, Rocket, Cpu } from 'lucide-react';
 
 const journey = [
   { icon: GraduationCap, title: 'Joined ITM SLS Baroda University', desc: 'Began my academic journey in Computer Science Engineering.' },
@@ -11,7 +11,6 @@ const journey = [
   { icon: Globe, title: 'Learned HTML5 & CSS3', desc: 'Stepped into web development with HTML5 and CSS3.' },
   { icon: Layout, title: 'Building Responsive Websites', desc: 'Started crafting responsive, mobile-friendly websites.' },
   { icon: Briefcase, title: 'LIC Agent Business Website', desc: 'Built my first real-world project — an LIC Agent Business Website for my mother.' },
-  { icon: User, title: 'Personal Portfolio Website', desc: 'Designed and developed my personal portfolio to showcase my skills and projects.' },
   { icon: Layers, title: 'Learning Java, C++, Git & GitHub', desc: 'Currently learning Java, C++, Git, GitHub, and modern development practices.' },
   { icon: Brain, title: 'Exploring Artificial Intelligence', desc: 'Exploring AI and continuously building projects to sharpen my skills.' },
   { icon: Rocket, title: 'Future AI Engineer & Developer', desc: 'Working towards becoming a professional AI Engineer and Software Developer.' },
@@ -19,17 +18,17 @@ const journey = [
 
 export function Journey() {
   return (
-    <section id="journey" className="relative py-24 md:py-32">
+    <section id="journey" className="relative py-16 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <span className="text-sm font-mono text-gradient-purple tracking-widest">05 / JOURNEY</span>
-          <h2 className="mt-3 font-display text-4xl md:text-6xl font-bold">
+          <span className="text-xs md:text-sm font-mono text-gradient-purple tracking-widest">05 / JOURNEY</span>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl lg:text-6xl font-bold">
             My <span className="text-gradient">Journey</span>
           </h2>
         </motion.div>
@@ -57,14 +56,14 @@ export function Journey() {
 
                   {/* Card */}
                   <div className={`ml-12 md:ml-0 md:w-1/2 ${isLeft ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
-                    <div className="glass-strong rounded-2xl p-5 glow-border hover:glow-purple transition-shadow">
+                    <div className="glass-strong rounded-2xl p-4 md:p-5 glow-border hover:glow-purple transition-shadow">
                       <div className={`flex items-center gap-3 mb-2 ${isLeft ? 'md:flex-row-reverse' : ''}`}>
                         <div className="p-2 rounded-xl bg-purple-500/10">
-                          <item.icon className="text-purple-400" size={20} />
+                          <item.icon className="text-purple-400" size={18} />
                         </div>
-                        <h3 className="font-display font-semibold">{item.title}</h3>
+                        <h3 className="font-display text-sm md:text-base font-semibold">{item.title}</h3>
                       </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                      <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
                   <div className="hidden md:block md:w-1/2" />

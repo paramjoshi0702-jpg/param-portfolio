@@ -37,7 +37,7 @@ const stats = [
 
 export function About() {
   return (
-    <section id="about" className="relative py-24 md:py-32">
+    <section id="about" className="relative py-16 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
 
         {/* Heading */}
@@ -46,15 +46,15 @@ export function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <span className="text-sm font-mono text-gradient-purple tracking-widest">01 / ABOUT</span>
-          <h2 className="mt-3 font-display text-4xl md:text-6xl font-bold">
+          <span className="text-xs md:text-sm font-mono text-gradient-purple tracking-widest">01 / ABOUT</span>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl lg:text-6xl font-bold">
             About <span className="text-gradient">Me</span>
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
 
           {/* ── Photo side ──────────────────────────────── */}
           <motion.div
@@ -70,7 +70,7 @@ export function About() {
               style={{ background: 'radial-gradient(circle at 40% 60%, #7c3aed, #2563eb, transparent 70%)' }}
             />
 
-            <div className="relative aspect-[4/5] max-w-md mx-auto rounded-3xl overflow-hidden glow-border shadow-2xl shadow-purple-900/30">
+            <div className="relative aspect-[4/5] max-w-xs sm:max-w-sm md:max-w-md mx-auto rounded-3xl overflow-hidden glow-border shadow-2xl shadow-purple-900/30">
               {/* Actual photo */}
               <Image
                 src="/images/param.jpg"
@@ -84,13 +84,13 @@ export function About() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#05030f]/70 via-transparent to-transparent" />
 
               {/* Bottom info pill */}
-              <div className="absolute bottom-5 left-5 right-5 glass rounded-2xl p-4">
-                <div className="text-sm text-muted-foreground">Computer Science Engineering</div>
-                <div className="text-base font-semibold text-gradient-purple">AI Specialization — ITM SLS</div>
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-5 sm:left-5 sm:right-5 glass rounded-2xl p-3 sm:p-4">
+                <div className="text-xs sm:text-sm text-muted-foreground">Computer Science Engineering</div>
+                <div className="text-sm sm:text-base font-semibold text-gradient-purple">AI Specialization — ITM SLS</div>
               </div>
 
               {/* Status badge */}
-              <div className="absolute top-5 right-5 glass rounded-full px-3 py-1.5 text-xs">
+              <div className="absolute top-4 right-4 sm:top-5 sm:right-5 glass rounded-full px-2.5 py-1 sm:px-3 sm:py-1.5 text-[10px] sm:text-xs">
                 <span className="inline-block w-2 h-2 rounded-full bg-green-400 mr-2 animate-pulse-glow" />
                 Currently Learning
               </div>
@@ -104,11 +104,11 @@ export function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.15 }}
           >
-            <h3 className="font-display text-2xl md:text-3xl font-semibold mb-5">
+            <h3 className="font-display text-xl md:text-2xl lg:text-3xl font-semibold mb-4 md:mb-5">
               Passionate about <span className="text-gradient">AI</span> &amp; Software Development
             </h3>
 
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="space-y-3 md:space-y-4 text-sm md:text-base text-muted-foreground leading-relaxed">
               <p>
                 I am{' '}
                 <span className="text-foreground font-medium">Param Sandeepbhai Joshi</span>, a passionate
@@ -138,7 +138,7 @@ export function About() {
             </div>
 
             {/* Stats grid */}
-            <div className="mt-8 grid grid-cols-2 gap-4">
+            <div className="mt-6 md:mt-8 grid grid-cols-2 gap-3 md:gap-4">
               {stats.map((s, i) => (
                 <motion.div
                   key={s.label}
@@ -146,16 +146,16 @@ export function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="glass rounded-2xl p-4 hover:bg-white/[0.07] transition-colors group"
+                  className="glass rounded-2xl p-3 md:p-4 hover:bg-white/[0.07] transition-colors group"
                 >
                   <s.icon
                     className="text-purple-400 mb-2 group-hover:scale-110 transition-transform"
-                    size={22}
+                    size={20}
                   />
-                  <div className="font-display text-3xl font-bold text-gradient">
+                  <div className="font-display text-2xl md:text-3xl font-bold text-gradient">
                     <Counter to={s.value} suffix={s.suffix} />
                   </div>
-                  <div className="text-xs text-muted-foreground mt-1">{s.label}</div>
+                  <div className="text-[11px] md:text-xs text-muted-foreground mt-1">{s.label}</div>
                 </motion.div>
               ))}
             </div>

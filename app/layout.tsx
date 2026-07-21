@@ -1,10 +1,11 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter, Space_Grotesk } from 'next/font/google';
+import { Inter, Manrope, JetBrains_Mono } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-display' });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+const manrope = Manrope({ subsets: ['latin'], variable: '--font-display', display: 'swap' });
+const jetbrains = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono', display: 'swap' });
 
 const SITE_URL = 'https://paramjoshi0702-jpg.github.io';
 
@@ -19,7 +20,6 @@ export const metadata: Metadata = {
   keywords: ['Param Joshi', 'AI Engineer', 'Software Developer', 'Portfolio', 'Artificial Intelligence', 'CSE', 'ITM SLS'],
   authors: [{ name: 'Param Joshi' }],
   creator: 'Param Joshi',
-  themeColor: '#05030f',
   openGraph: {
     title: 'Param Joshi — AI Enthusiast & Software Developer',
     description: 'Computer Science Engineering student specializing in Artificial Intelligence.',
@@ -36,7 +36,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: '#05030f',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f4f4fb' },
+    { media: '(prefers-color-scheme: dark)', color: '#05030f' },
+  ],
   width: 'device-width',
   initialScale: 1,
 };
@@ -64,8 +67,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+      <body className={`${inter.variable} ${manrope.variable} ${jetbrains.variable} font-sans antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange={false}>
           {children}
         </ThemeProvider>
       </body>

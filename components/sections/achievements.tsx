@@ -13,17 +13,17 @@ const achievements = [
 
 export function Achievements() {
   return (
-    <section id="achievements" className="relative py-24 md:py-32">
+    <section id="achievements" className="relative py-16 md:py-32">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <span className="text-sm font-mono text-gradient-purple tracking-widest">08 / HIGHLIGHTS</span>
-          <h2 className="mt-3 font-display text-4xl md:text-6xl font-bold">
+          <span className="text-xs md:text-sm font-mono text-gradient-purple tracking-widest">08 / HIGHLIGHTS</span>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl lg:text-6xl font-bold">
             My <span className="text-gradient">Highlights</span>
           </h2>
         </motion.div>
@@ -37,13 +37,13 @@ export function Achievements() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               whileHover={{ y: -6, scale: 1.03 }}
-              className="glass-strong rounded-3xl p-6 text-center glow-border hover:glow-purple transition-shadow group"
+              className="glass-strong rounded-3xl p-4 md:p-6 text-center glow-border hover:glow-purple transition-shadow group"
             >
-              <div className="mx-auto w-14 h-14 rounded-2xl bg-purple-500/10 flex items-center justify-center mb-4 group-hover:rotate-6 transition-transform">
-                <a.icon className="text-gradient-purple" size={26} />
+              <div className="mx-auto w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-purple-500/10 flex items-center justify-center mb-3 md:mb-4 group-hover:rotate-6 transition-transform">
+                <a.icon className="text-gradient-purple" size={22} />
               </div>
-              <h3 className="font-display font-semibold mb-2 text-sm">{a.title}</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">{a.desc}</p>
+              <h3 className="font-display font-semibold mb-1.5 md:mb-2 text-xs md:text-sm">{a.title}</h3>
+              <p className="text-[11px] md:text-xs text-muted-foreground leading-relaxed">{a.desc}</p>
             </motion.div>
           ))}
         </div>

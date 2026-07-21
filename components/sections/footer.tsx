@@ -13,7 +13,7 @@ export function Footer() {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <footer className="relative py-12 border-t border-white/5">
+    <footer className="relative py-10 md:py-12 border-t border-white/5">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
@@ -32,7 +32,7 @@ export function Footer() {
                 target={s.href.startsWith('http') ? '_blank' : undefined}
                 rel="noreferrer"
                 whileHover={{ y: -4 }}
-                className="p-2.5 rounded-xl glass hover:bg-white/10 transition-colors"
+                className="p-2.5 rounded-xl glass hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50"
                 aria-label={s.label}
               >
                 <s.icon size={18} className="text-muted-foreground hover:text-foreground transition-colors" />
@@ -42,14 +42,14 @@ export function Footer() {
 
           <button
             onClick={scrollTop}
-            className="p-3 rounded-xl glass hover:bg-white/10 transition-colors group"
+            className="p-3 rounded-xl glass hover:bg-white/10 transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50"
             aria-label="Back to top"
           >
             <ArrowUp size={18} className="group-hover:-translate-y-1 transition-transform" />
           </button>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-muted-foreground">
+        <div className="mt-8 pt-6 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs md:text-sm text-muted-foreground">
           <p className="flex items-center gap-1.5">
             Designed and Developed by <span className="text-foreground font-medium">Param Joshi</span>
             <Heart size={12} className="text-purple-400 fill-purple-400" />

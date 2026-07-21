@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 const links = [
   { label: 'Home', href: '#home' },
@@ -93,10 +94,14 @@ export function Navbar() {
                 )}
               </button>
             ))}
+            <div className="ml-2 pl-2 border-l border-white/10">
+              <ThemeToggle />
+            </div>
           </div>
 
           {/* Mobile actions */}
           <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
             <button
               className="p-2 rounded-lg glass hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500/50"
               onClick={() => setOpen(!open)}
