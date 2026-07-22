@@ -140,7 +140,7 @@ export function Contact() {
     { icon: Mail, label: 'Email', value: 'paramjoshi0702@gmail.com', href: 'mailto:paramjoshi0702@gmail.com' },
     { icon: Phone, label: 'Phone', value: '+91 6352361844', href: 'tel:+916352361844' },
     { icon: Github, label: 'GitHub', value: 'github.com/paramjoshi0702-jpg', href: 'https://github.com/paramjoshi0702-jpg' },
-    { icon: Linkedin, label: 'LinkedIn', value: 'Connect with me', href: '#' },
+    { icon: Linkedin, label: 'LinkedIn', value: 'View LinkedIn Profile', href: 'https://www.linkedin.com/in/param-joshi-a10360380?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
   ];
 
   const inputBase =
@@ -193,7 +193,7 @@ export function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                whileHover={{ x: 6 }}
+                whileHover={c.label === 'LinkedIn' ? { x: 6, scale: 1.03 } : { x: 6 }}
                 className="flex items-center gap-3 md:gap-4 glass-strong rounded-2xl p-3.5 md:p-4 glow-border hover:glow-purple transition-shadow group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50"
                 aria-label={`${c.label}: ${c.value}`}
               >
