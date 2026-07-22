@@ -166,14 +166,14 @@ export function Hero() {
             >
               {[
                 { icon: Github, href: GITHUB, label: 'GitHub' },
-                { icon: Linkedin, href: '#', label: 'LinkedIn' },
+                { icon: Linkedin, href: 'https://www.linkedin.com/in/param-joshi-a10360380?utm_source=share_via&utm_content=profile&utm_medium=member_android', label: 'LinkedIn' },
                 { icon: Mail, href: 'mailto:paramjoshi0702@gmail.com', label: 'Email' },
               ].map((s, i) => (
                 <motion.a
                   key={s.label}
                   href={s.href}
                   target={s.href.startsWith('http') ? '_blank' : undefined}
-                  rel="noreferrer"
+                  rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   whileHover={{ y: -4, scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   className="p-3 rounded-xl glass hover:bg-white/10 transition-colors"

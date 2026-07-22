@@ -186,7 +186,7 @@ function TiltCard() {
               ref={liveBtnRef}
               href={project.liveUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium text-white transition-all hover:shadow-[0_0_25px_rgba(124,58,237,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50"
               style={{ background: 'linear-gradient(135deg, #7c3aed, #2563eb)' }}
             >
@@ -196,7 +196,7 @@ function TiltCard() {
               ref={ghBtnRef}
               href={project.githubUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-medium glass hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50"
             >
               <Github size={15} /> GitHub

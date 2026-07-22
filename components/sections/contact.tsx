@@ -188,7 +188,7 @@ export function Contact() {
                 key={c.label}
                 href={c.href}
                 target={c.href.startsWith('http') ? '_blank' : undefined}
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

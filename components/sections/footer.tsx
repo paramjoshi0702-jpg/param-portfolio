@@ -30,7 +30,7 @@ export function Footer() {
                 key={s.label}
                 href={s.href}
                 target={s.href.startsWith('http') ? '_blank' : undefined}
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 whileHover={{ y: -4 }}
                 className="p-2.5 rounded-xl glass hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400/50"
                 aria-label={s.label}
